@@ -7,20 +7,12 @@ int main()
 	int input;
 	cin >> input;
 
-	int num{ 0 };
-	if (input < 2) {
-		cout << input;
+	int arr[20];
+	arr[0] = 0;
+	arr[1] = 1;
+
+	for (int i = 2; i <= input; ++i) {
+		arr[i] = arr[i - 1] + arr[i - 2];
 	}
-	else {
-		int n1 = 0;
-		int n2 = 1;
-		int cnt = 0;
-		while (cnt + 2 <= input) {
-			num = n1 + n2;
-			n1 = n2;
-			n2 = num;
-			cnt++;
-		}
-		cout << num;
-	}
+	cout << arr[input] << endl;
 }
