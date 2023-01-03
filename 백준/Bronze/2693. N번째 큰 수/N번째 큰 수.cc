@@ -9,20 +9,18 @@ int main()
 	int T;
 	cin >> T;
 
-	vector<vector<int>> arrs;
+	vector<int> result;
 
 	for (int i = 0; i < T; ++i) {
-		vector<int> arr;
-		int num;
+		int arr[10];
 		for (int j = 0; j < 10; ++j) {
-			cin >> num;
-			arr.emplace_back(num);
+			cin >> arr[j];
 		}
-		sort(arr.begin(), arr.end());
-		arrs.emplace_back(arr);
+		sort(arr, arr+10);
+		result.emplace_back(arr[7]);
 	}
 
 	for (int i = 0; i < T; ++i) {
-			cout << arrs[i][7] << endl;
+		cout << result[i] << endl;
 	}
 }
