@@ -14,32 +14,17 @@ int solution(string dartResult) {
         if (isdigit(dartResult[i])) {
             tempScore += dartResult[i];
         }
-        else {
-            if (!tempScore.empty()) {
+        else if (!tempScore.empty()) {
                 scores.emplace_back(stoi(tempScore));
                 tempScore = "";
                 scoreCnt++;
-            }
-            if (isalpha(dartResult[i])) {
-                if (dartResult[i] == 'S') {
-
-                }
-                else if (dartResult[i] == 'D') {
-                    scores[scoreCnt] = pow(scores[scoreCnt], 2);
-                }
-                else if (dartResult[i] == 'T') {
-                    scores[scoreCnt] = pow(scores[scoreCnt], 3);
-                }
-            }
-            else if (dartResult[i] == '#') {
-                scores[scoreCnt] *= -1;
-            }
-            else if (dartResult[i] == '*') {
-                scores[scoreCnt] *= 2;
-                if (scoreCnt > 0) {
-                    scores[scoreCnt-1] *= 2;
-                }
-            }
+        }
+        if (dartResult[i] == 'D') scores[scoreCnt] = pow(scores[scoreCnt], 2);
+        else if (dartResult[i] == 'T') scores[scoreCnt] = pow(scores[scoreCnt], 3);
+        else if (dartResult[i] == '#') scores[scoreCnt] *= -1;
+        else if (dartResult[i] == '*') {
+            scores[scoreCnt] *= 2;
+            if (scoreCnt > 0) scores[scoreCnt-1] *= 2;
         }
     }
         
