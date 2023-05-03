@@ -5,18 +5,6 @@
 using namespace std;
 unordered_map<char, int> um;
 
-void InitializeMap()
-{
-    um['R'] = 0;
-    um['T'] = 0;
-    um['C'] = 0;
-    um['F'] = 0;
-    um['J'] = 0;
-    um['M'] = 0;
-    um['A'] = 0;
-    um['N'] = 0;
-}
-
 char CompareUm(char a, char b)
 {
     if (um[a] == um[b]) {
