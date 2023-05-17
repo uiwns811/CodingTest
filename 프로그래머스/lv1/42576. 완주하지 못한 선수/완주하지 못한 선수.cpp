@@ -19,9 +19,7 @@ string solution(vector<string> participant, vector<string> completion) {
         }
     }
     
-    for (auto& str : s) {
-        answer = str;
-    }
+    answer = *s.begin();
     
     return answer;
 }
