@@ -10,13 +10,10 @@ bool solution(vector<string> phone_book) {
     sort(phone_book.begin(), phone_book.end());    
     
     for (int i = 0 ; i < phone_book.size() - 1 ; i++) {
-        int size = phone_book[i].length();
-        string str = phone_book[i];
-        if (str == phone_book[i+1].substr(0, size)) {
+        if (phone_book[i] == phone_book[i+1].substr(0, phone_book[i].length())) {
             answer = false;
             break;
         }
-        if (!answer) break;
     }
     return answer;
 }
