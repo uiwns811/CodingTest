@@ -7,26 +7,19 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     vector<int> answer;
     vector<int> release;
     
+    int lastDay = 0;
     for (int i = 0 ; i < progresses.size() ; i++) {
-     	int cnt = 1;
-        while(progresses[i] + speeds[i] * cnt < 100)
-            cnt++;
-        release.emplace_back(cnt);
-    }
-    
-    int lastRelease = release[0];
-    int releaseCnt = 0;
-    for(int i = 0 ; i < release.size() ; i++) {
-        if (release[i] <= lastRelease) {
-            releaseCnt++;
+     	float fday = ((100 - progresses[i]) / (float)speeds[i]);
+        fday = ((100 - progresses[i]) % speeds[i] == 0 ? fday : fday+=1);
+        int day = (int)fday;
+        if (lastDay >= day) {
+            ++answer.back();
         }
         else {
-            lastRelease = release[i];
-            answer.emplace_back(releaseCnt);
-            releaseCnt = 1;
+            answer.emplace_back(1);
+            lastDay = day;
         }
-    }
-    answer.emplace_back(releaseCnt);
-    
+   	}
+	    
     return answer;
 }
