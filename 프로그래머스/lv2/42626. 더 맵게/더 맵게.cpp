@@ -14,6 +14,10 @@ int solution(vector<int> scoville, int K) {
     }
     
     while(pq.top() < K) {
+        if (pq.size() < 2) {
+            answer = -1;
+            break;
+        }
         int min = pq.top();
         pq.pop();
         int next = pq.top();
@@ -21,13 +25,6 @@ int solution(vector<int> scoville, int K) {
         int newFood = min + next * 2;
         pq.push(newFood);
         answer++;
-        
-        if(pq.size() < 2) {
-          	if(pq.top() < K) {
-                answer = -1;
-                break;
-            }
-        }
     }
     
     return answer;
