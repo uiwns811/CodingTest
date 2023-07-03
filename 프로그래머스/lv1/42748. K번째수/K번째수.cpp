@@ -6,14 +6,14 @@ using namespace std;
 
 vector<int> solution(vector<int> array, vector<vector<int>> commands) {
     vector<int> answer;
-        
-    for (auto& c : commands) {
-        vector<int> temp;
-        for (int i = c[0] - 1 ; i < c[1] ; i++) {
-            temp.emplace_back(array[i]);
+    
+    for(auto& command : commands) {
+        vector<int> vec;
+    	for(int i = command[0] - 1; i < command[1] ; i++) {
+            vec.emplace_back(array[i]);
         }
-        sort(temp.begin(), temp.end());
-        answer.emplace_back(temp[c[2] - 1]);
+            sort(vec.begin(), vec.end());
+            answer.emplace_back(vec[command[2]-1]);
     }
     return answer;
 }
