@@ -9,9 +9,6 @@ int connected = 0;
 
 void dfs(vector<vector<int>>& com, int n, int cur)
 {
-    if (cur >= n) {
-        return;
-    }
     visited[cur] = true;
     
     for(int i = 0 ; i < n ; i++) {
