@@ -1,7 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
 int main()
@@ -19,21 +17,18 @@ int main()
 		cin >> N >> M;
 
 		queue<pair<int, bool>> q;
-		vector<int> v;
+		priority_queue<int> pq;
 		
 		for (int j = 0; j < N; j++) {
 			cin >> priority;
 			if (j == M) q.push(make_pair(priority, true));
 			else q.push(make_pair(priority, false));
-			v.emplace_back(priority);
+			pq.push(priority);
 		}
-
-		sort(v.begin(), v.end());
 
 		int answer = 0;
 		while (!q.empty()) {
-			int max = v.back();
-			while (q.front().first < max) {
+			while (q.front().first < pq.top()) {
 				pair<int, bool> val = q.front();
 				q.pop();
 				q.push(val);
@@ -44,7 +39,7 @@ int main()
 			}
 			else {
 				q.pop();
-				v.pop_back();
+				pq.pop();
 				answer++;
 			}
 		}
