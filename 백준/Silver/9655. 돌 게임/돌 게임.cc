@@ -3,20 +3,13 @@ using namespace std;
 
 int main()
 {
+	cin.tie(0);
+	cout.tie(0);
+	ios::sync_with_stdio(false);
+
 	int n;
 	cin >> n;
 
-	bool isSk = false;
-	while (n > 0) {
-		if (n >= 3) {
-			n -= 3;
-			isSk = !isSk;
-		}
-		else if (n >= 1) {
-			n -= 1;
-			isSk = !isSk;
-		}
-	}
-	if (isSk) cout << "SK" << '\n';
+	if (n % 2 != 0) cout << "SK" << '\n';
 	else cout << "CY" << '\n';
 }
