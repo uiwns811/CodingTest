@@ -1,33 +1,27 @@
 #include <string>
 #include <vector>
-#include <cmath>
 
 using namespace std;
 
-bool IsPrime(const std::vector<int>& _prime, const int _num)
-{
-    // 대상 숫자의 제곱근을 구합니다.
-    int sqrtNum = sqrt(_num);
-    for (const int& prime : _prime)
-    {
-        // 제곱근보다 큰 소수가 나올 때까지 나누어 떨어지지 않는다면 대상 숫자는 소수입니다.
-        if (prime > sqrtNum) return true;
-        
-        // 역대 소수로 나누어 떨어지면 소수가 아닙니다.
-        if (0 == _num % prime) return false;
-    }
-    // 누적 소수가 없거나 나누어 떨어지지 않는다면 소수입니다.
-    return true;
-}
-
 int solution(int n) {
+    int answer = 0;
     
-    std::vector<int> primes;
-    for (int i = 2 ; i <= n ; ++i)
+    std::vector<bool> vec(n+1, true);
+    
+    for (int tgt = 2 ; tgt <= n ; ++tgt)
     {
-        if (true == IsPrime(primes, i))
-            primes.emplace_back(i);
+        // 이미 특정 숫자의 배수이므로, 검사하지 않습니다.
+        if (false == vec[tgt]) continue;
+        
+        // 아래 연산을 하는 순간, 소수로 가정하고 결과값을 1 증가시켜줍니다.
+        ++answer;
+        
+        // 해당 숫자로 나누어 떨어지는 숫자들을 false로 변경합니다.
+        for (int loop{tgt * 2} ; loop <= n ; loop += tgt)
+        {
+            if (0 == loop % tgt)
+                vec[loop] = false;
+        }
     }
-    
-    return primes.size();
+    return answer;
 }
