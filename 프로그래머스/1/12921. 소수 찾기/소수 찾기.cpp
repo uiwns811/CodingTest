@@ -18,10 +18,7 @@ int solution(int n) {
         
         // 해당 숫자로 나누어 떨어지는 숫자들을 false로 변경합니다.
         for (int loop{tgt * 2} ; loop <= n ; loop += tgt)
-        {
-            if (0 == loop % tgt)
-                vec[loop] = false;
-        }
+            vec[loop] = false;
     }
     return answer;
 }
